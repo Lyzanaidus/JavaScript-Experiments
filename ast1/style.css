@@ -1,0 +1,57 @@
+body
+{
+	background: #333;
+}
+
+.carousel
+{
+	width: 600px;
+	height: 400px;
+	margin: 50px 275px;
+	position: relative;
+	text-align: center;
+	overflow:hidden;
+	background: blue;
+}
+
+.image
+{
+	display: inline-block;
+	width: 300%;					/* 100% = 1 picture for same size*/
+	margin-left: 0px;
+}
+
+.image img
+{
+	width: 600px;
+	height: 400px;
+	margin: 0px -2px;
+}
+
+.button-left
+{
+	position: absolute;
+	top: 190px;
+	left: 10px;
+}
+
+.button-right
+{
+	position: absolute;
+	top: 190px;
+	right: 10px;
+}
+
+.buttons
+{
+	position: absolute;
+	top: 95%;
+	left: 45%;
+}
+
+.buttons button
+{
+	background: #ffffff22;
+	border-radius: 50%;
+	height: 15px;
+}

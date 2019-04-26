@@ -1,0 +1,10 @@
+body
+{
+	margin: 0px;
+}
+
+canvas
+{
+	margin: 50px 0px 0px 550px;
+	background-color: blue;
+}
