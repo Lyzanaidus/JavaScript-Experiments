@@ -24,15 +24,15 @@ canvas.height = maxCanvasHeight - 6;
 var center_x_pos;
 var center_y_pos;
 var radius = 10;
-const minRadius = 5;
-const maxRadius = 10;
+const minRadius = 3;
+const maxRadius = 5;
 const arc_start = 0;
 const arc_end = 2*PI;	
 var colourArr = ['red' , 'blue' , 'yellow' , 'purple' , 'green' , 'orange' , 'pink' , 'silver' , 'black' , 'grey' , 'turquoise' , 'gold' ]	
 var colour;
 var dx = 1;			//	X-Vextor	
 var dy = 1;			//	Y-Vextor
-const noc = 100;
+const noc = 500;
 
 //	Function to randomly initialize  x & y positions, radius, colour, dx & dy
 function randomInitialize() 
