@@ -51,7 +51,7 @@ class Avatar
 		
 		this.dx = 0;
 		this.dy = 0;
-		this.speed = 10;
+		this.speed = 3;
 		
 		this.isFacingLeft = false;
 		this.previousIsFacingLeft = false;
@@ -102,6 +102,7 @@ class Avatar
 									}
 									console.log(this.nextMove);
 									this.updateAnimation();
+									this.updatePos();
 								}
 
 								
@@ -224,22 +225,33 @@ class Avatar
 
 	updatePos()
 	{
-		if (nextMove[0])			//	Up 
+		if (this.nextMove[0])			//	Up 
 		{
-
+			this.dy = -1;
 		}
-		if (nextMove[0])			//	Up 
+		else if (this.nextMove[1])			//	Down
 		{
-
+			this.dy = 1;
 		}
-		if (nextMove[0])			//	Up 
+		else
 		{
-
+			this.dy = 0;
 		}
-		if (nextMove[0])			//	Up 
+		
+		if (this.nextMove[2])			//	Left
 		{
-
+			this.dx = -1;
 		}
+		else if (this.nextMove[3])			//	Right
+		{
+			this.dx = 1;
+		}
+		else
+		{
+			this.dx = 0;
+		}
+
+		this.move(this.dx,this.dy);
 	}
 
 }
