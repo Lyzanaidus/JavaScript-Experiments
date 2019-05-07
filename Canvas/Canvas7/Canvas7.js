@@ -42,9 +42,10 @@ ballXPos = 10;
 ballYPos = 120;
 
 xdir = 1;
-dx = 15;
-var asd = 0;
-var ct = 1;
+dx = 45;
+ydir = 1;
+dy = 5;
+var asd = 4;
 
 function displayFrame() 
 {
@@ -56,18 +57,19 @@ function updateBallAnimation()
 	//console.log(isCollision);
 	if (isCollision) 
 	{
-		if (asd < 7) 
+		console.log('Colli');
+		if (asd <= 7) 
 		{
-			currentFrameNo = ((currentFrameNo + 1) % (cols-4));	//	Sets value of currentFrameNo to the range [0,cols - 4]
-			asd = currentFrameNo + 4;
 			SheetXPos = asd * SpriteWidth;
+			asd++;
 			console.log(asd);
-			ct++;
 		}
-		if (ct === 4)
+		else
 		{
-			currentFrameNo = 3;
+			SheetXPos =  (0 - SpriteWidth) * SpriteWidth;
 		}
+
+		console.log(currentFrameNo,currentFrameType);
 	}
 	else
 	{
@@ -88,6 +90,10 @@ function updateBallAnimation()
 function updateBallXPos() 
 {
 	ballXPos = ballXPos + (xdir * dx);
+}
+function updateBallYPos() 
+{
+	ballYPos = ballYPos + (ydir * dy);
 }
 
 
@@ -118,10 +124,9 @@ function isBoundaryCollision()
 
 	else
 	{
-		isBoundaryXCollision = 0;
-		isCollision = false;	
+		isBoundaryXCollision = 0;	
 	}
-	/*
+	
 	if (ballYPos <= 110) 
 	{
 		isBoundaryYCollision = -1;
@@ -139,8 +144,7 @@ function isBoundaryCollision()
 	else
 	{
 		isBoundaryYCollision = 0;
-		isCollision = false;
-	}*/
+	}
 }
 
 function animate() 
@@ -151,6 +155,10 @@ function animate()
 	if (boundaryCollision()[0] != 1) 
 	{
 		updateBallXPos();
+	}
+	if (boundaryCollision()[1] != 1) 
+	{
+		updateBallYPos();
 	}
 	displayFrame();
 }
