@@ -84,7 +84,7 @@ class Grunt
 									
 									//console.log('clicked at ',event.clientX,event.clientY);
 									GruntObject.targetXPos = event.clientX;
-									GruntObject.targetYPos = event.clientY + (GruntObject.height/2); 
+									GruntObject.targetYPos = event.clientY - (GruntObject.height / 2); 
 									if (GruntObject.targetXPos < GruntObject.xPos) 
 									{
 										GruntObject.isFacingLeft = true;
@@ -94,7 +94,7 @@ class Grunt
 										GruntObject.isFacingLeft = false;
 									}
 									dot(GruntObject.targetXPos,GruntObject.targetYPos)
-									
+									GruntObject.updatePos();									
 									//console.log(GruntObject.targetXPos,GruntObject.targetYPos);								
 								}
 
@@ -110,12 +110,12 @@ class Grunt
 		//console.log('sheetWinXPos : ',this.sheetWinXPos,'sheetWinYPos : ',this.sheetWinYPos);
 	}
 
-	move(dx,dy) 
+	move() 
 	{
 		//console.log('[Class Grunt]\n','Function : move()');
 		
-		this.xPos = this.xPos + (this.speed * dx);
-		this.yPos = this.yPos + (this.speed * dy);
+		this.xPos = this.xPos + (this.speed * this.dx);
+		this.yPos = this.yPos + (this.speed * this.dy);
 
 		this.updateAnimation();
 		//console.log('XPos : ',this.xPos,'YPos : ',this.yPos);
@@ -219,8 +219,13 @@ class Grunt
 
 	start()
 	{
-		this.updatePos();
+		this.move();
 		this.display();
+		console.log('Area X : ',this.xPos,this.xPos + this.width);
+		console.log('targetXPos : ',this.targetXPos);
+		console.log('Area Y : ',this.yPos,this.yPos + this.height);
+		console.log('targetYPos : ',this.targetYPos);
+		console.log('inArea : ',this.inArea())
 	}
 
 }
@@ -228,7 +233,7 @@ class Grunt
 let initXPos = 0;
 let initYPos = 0;
 let img = new Image();
-img.src = "Images/john.jpg";
+img.src = "Images/john.png";
 img.width = 640;
 img.height = 480;
 let noOfRows = 6;
